@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VR;
 
 namespace SceneLoader
 {
@@ -23,27 +24,42 @@ namespace SceneLoader
             Instance.StartCoroutine(Instance.Load(sceneName));
         }
 
+        AssetBundleCreateRequest assetBundleAsync;
+        AsyncOperation sceneLoadAsync;
         protected IEnumerator Load(string sceneName)
         {
+            UI.Components.Instance.LoadingFill.SetFill(0);
+
             Debug.Log("Loading scene...");
 
             UI.Components.Instance.Loading.Set (true);
 
-            AssetBundleCreateRequest bundle = AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/scenes/" + sceneName);
+            yield return new WaitForSeconds (1/ (UI.Components.Instance.Loading.TransitionSpeed));
 
-            yield return bundle.isDone;
+            assetBundleAsync = AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/scenes/" + sceneName);
 
-            string [] scenes = bundle.assetBundle.GetAllScenePaths();
+            while (!assetBundleAsync.isDone)
+            {
+                UI.Components.Instance.LoadingFill.fillAmount = assetBundleAsync.progress / 2f;
+                yield return null;
+            }
 
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scenes[0], LoadSceneMode.Single);
+            string [] scenes = assetBundleAsync.assetBundle.GetAllScenePaths();
 
-            asyncOperation.allowSceneActivation = true;
+            Application.backgroundLoadingPriority = ThreadPriority.High;
 
-            yield return asyncOperation.isDone;
+            sceneLoadAsync = SceneManager.LoadSceneAsync(scenes[0], LoadSceneMode.Single);
+            //sceneLoadAsync.allowSceneActivation = true;
+
+            while (!sceneLoadAsync.isDone)
+            {
+                UI.Components.Instance.LoadingFill.fillAmount = 0.5f + sceneLoadAsync.progress / 2f;
+                yield return null;
+            }
 
             UI.Components.Instance.Loading.Set(false);
 
-            bundle.assetBundle.Unload(false);
+            assetBundleAsync.assetBundle.Unload(false);
         }
     }
 }

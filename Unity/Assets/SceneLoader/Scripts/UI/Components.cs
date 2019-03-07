@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace SceneLoader.UI
 {
@@ -12,6 +13,8 @@ namespace SceneLoader.UI
 
         public Visibility SceneSelector;
         public Visibility Loading;
+        public Filler LoadingFill;
+        public FollowTransform FlyingCanvas;
 	}
 }
 

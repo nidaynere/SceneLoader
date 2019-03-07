@@ -57,6 +57,8 @@ namespace SceneLoader.UI
         #endregion
 
         #region actions
+        public UnityEvent OnOpening;
+        public UnityEvent OnClosing;
         public UnityEvent OnOpened;
         public UnityEvent OnClosed;
         #endregion
@@ -97,10 +99,13 @@ namespace SceneLoader.UI
                 }
 
                 alphaDown = 1;
+
+                OnOpening?.Invoke();
             }
             else
             {
                 alphaDown = -1;
+                OnClosing?.Invoke();
             }
         }
 

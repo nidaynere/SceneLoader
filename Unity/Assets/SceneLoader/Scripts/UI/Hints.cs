@@ -13,6 +13,7 @@ namespace SceneLoader.UI
         void Awake ()
         {
             randomString = JsonUtility.FromJson<Utilities.RandomString>(File.ReadAllText (Application.streamingAssetsPath + "/hints.json"));
+            SetHint();
         }
 
         public Text HintText;
