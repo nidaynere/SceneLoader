@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace SceneLoader.UI
 {
+    /// <summary>
+    /// Draw all scenes to UI and interactable.
+    /// </summary>
     public class SceneSelector : MonoBehaviour
     {
         private void Start()
@@ -14,7 +17,7 @@ namespace SceneLoader.UI
         /// <summary>
         /// Read scenes on Streaming assets.
         /// </summary>
-        public void ReadScenes()
+        public static void ReadScenes()
         {
             string [] scenes = Directory.GetFiles(Application.streamingAssetsPath + "/scenes", "*.unity3d");
 

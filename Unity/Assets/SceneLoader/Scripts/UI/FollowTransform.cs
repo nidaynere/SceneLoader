@@ -5,6 +5,9 @@ using Unity.Entities;
 
 namespace SceneLoader.UI
 {
+    /// <summary>
+    /// Object follow other object.
+    /// </summary>
     [RequireComponent (typeof (GameObjectEntity))]
     public class FollowTransform : MonoBehaviour
     {

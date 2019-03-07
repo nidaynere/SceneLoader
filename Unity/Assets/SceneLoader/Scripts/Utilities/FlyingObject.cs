@@ -5,6 +5,9 @@ using Unity.Entities;
 
 namespace SceneLoader.Utilities
 {
+    /// <summary>
+    /// Flying object, randomly flies on sky.
+    /// </summary>
     [RequireComponent(typeof(GameObjectEntity))]
     public class FlyingObject : MonoBehaviour
     {

@@ -5,6 +5,10 @@ using Unity.Entities;
 
 namespace SceneLoader.UI
 {
+    /// <summary>
+    /// Smooth image filler.
+    /// </summary>
+    /// 
     [RequireComponent(typeof(GameObjectEntity))]
     public class Filler : MonoBehaviour
     {
@@ -70,6 +74,10 @@ namespace SceneLoader.UI
         [HideInInspector]
         public bool filling = false;
 
+        /// <summary>
+        /// Set fill amount without a transition effect.
+        /// </summary>
+        /// <param name="Value"></param>
         public void SetFill(float Value)
         {
             GetComponent<Image>().fillAmount = Value;

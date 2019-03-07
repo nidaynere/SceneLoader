@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace SceneLoader.Utilities
 {
+    /// <summary>
+    /// Spawns flying objects at random position.
+    /// </summary>
     public class FlyingObjectSpawner : MonoBehaviour
     {
         private void Start()

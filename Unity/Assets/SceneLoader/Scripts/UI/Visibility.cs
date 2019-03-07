@@ -133,9 +133,10 @@ namespace SceneLoader.UI
                         gameObject.SetActive(false);
                         canvas.alpha = 0;
 
+                        alphaDown = 0;
+
                         OnClosed?.Invoke();
 
-                        alphaDown = 0;
 
                         return false;
                     }

@@ -5,6 +5,9 @@ using UnityEngine.VR;
 
 namespace SceneLoader
 {
+    /// <summary>
+    /// Main scene loader. Load the target scene as async.
+    /// </summary>
 	public class Loader : MonoBehaviour
 	{
         public static Loader Instance;
@@ -49,7 +52,6 @@ namespace SceneLoader
             Application.backgroundLoadingPriority = ThreadPriority.High;
 
             sceneLoadAsync = SceneManager.LoadSceneAsync(scenes[0], LoadSceneMode.Single);
-            //sceneLoadAsync.allowSceneActivation = true;
 
             while (!sceneLoadAsync.isDone)
             {

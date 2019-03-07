@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3811180964
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scenes/vrtest1.unity3d
+      Dependencies: {}

@@ -4,6 +4,10 @@ using System.IO;
 
 namespace SceneLoader.UI
 {
+    /// <summary>
+    /// Set random hint on loading screen.
+    /// </summary>
+    
     [System.Serializable]
     public class Hints : MonoBehaviour
     {
